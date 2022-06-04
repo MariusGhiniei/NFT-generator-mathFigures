@@ -119,7 +119,7 @@ namespace NFT
             this.button5.FlatAppearance.BorderSize = 0;
             this.button5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Tan;
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Location = new System.Drawing.Point(353, 11);
+            this.button5.Location = new System.Drawing.Point(278, 14);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(59, 36);
             this.button5.TabIndex = 4;
@@ -158,11 +158,11 @@ namespace NFT
             "Dreptunghiuri",
             "Poligoane",
             "Curbe Bezier"});
-            this.shapeDrop.Location = new System.Drawing.Point(404, 20);
+            this.shapeDrop.Location = new System.Drawing.Point(333, 20);
             this.shapeDrop.Name = "shapeDrop";
-            this.shapeDrop.Size = new System.Drawing.Size(18, 21);
+            this.shapeDrop.Size = new System.Drawing.Size(120, 21);
             this.shapeDrop.TabIndex = 6;
-            this.shapeDrop.SelectedIndexChanged += new System.EventHandler(this.shapeDrop_SelectedIndexChanged);
+           
             // 
             // colorButton
             // 
@@ -214,7 +214,8 @@ namespace NFT
             this.pictureBox.Size = new System.Drawing.Size(400, 400);
             this.pictureBox.TabIndex = 10;
             this.pictureBox.TabStop = false;
-            this.pictureBox.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.pictureBox.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox_Paint);
+            
             // 
             // printDialog
             // 

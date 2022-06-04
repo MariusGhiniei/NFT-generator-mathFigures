@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using System.Drawing.Imaging;
 using System.Drawing.Printing;
 
+
+
 namespace NFT
 {
     public partial class MainWindow : Form
@@ -73,9 +75,26 @@ namespace NFT
 
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void pictureBox_Paint(object sender, PaintEventArgs e)
         {
+            Line line = new Line();
+            line.draw(Color.Red, e);
 
+           Triangle triangle = new Triangle();
+            triangle.draw(Color.Blue, e);
+
+            MyRectangle rectangle = new MyRectangle();
+            rectangle.draw(Color.Pink, e);
+
+            Ellipse ellipse = new Ellipse();
+            ellipse.draw(Color.Green, e);
+
+            Bezier bezier = new Bezier();
+            bezier.draw(Color.Black, e);
+
+
+            
+              
         }
 
         private void inkButton_Click(object sender, EventArgs e)
@@ -84,9 +103,13 @@ namespace NFT
             ink.Show();
         }
 
-        private void shapeDrop_SelectedIndexChanged(object sender, EventArgs e)
+        private void shapeDrop_SelectedIndexChanged(object sender, PaintEventArgs e)
         {
-
+            if (shapeDrop.Text == "Linii")
+            {
+               
+                pictureBox_Paint(sender,e);
+            }
         }
 
         private void startDrawingButton_Click(object sender, EventArgs e)
