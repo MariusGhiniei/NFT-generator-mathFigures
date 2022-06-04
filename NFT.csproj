@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Ink.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ink.Designer.cs">
+      <DependentUpon>Ink.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -54,6 +60,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Ink.resx">
+      <DependentUpon>Ink.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
@@ -81,6 +90,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\cmyk--Scheme.png" />
     <Content Include="Assets\colors.png" />
     <Content Include="Assets\cmyk.png" />
     <Content Include="Assets\closeButton.png" />

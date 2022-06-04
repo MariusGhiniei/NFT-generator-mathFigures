@@ -30,84 +30,94 @@ namespace NFT
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.closeButton = new System.Windows.Forms.Button();
+            this.saveButton = new System.Windows.Forms.Button();
+            this.printButton = new System.Windows.Forms.Button();
+            this.inkButton = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
+            this.startDrawingButton = new System.Windows.Forms.Button();
+            this.shapeDrop = new System.Windows.Forms.ComboBox();
+            this.colorButton = new System.Windows.Forms.Button();
+            this.fillButton = new System.Windows.Forms.Button();
+            this.infoButton = new System.Windows.Forms.Button();
+            this.pictureBox = new System.Windows.Forms.PictureBox();
+            this.printDocument = new System.Drawing.Printing.PrintDocument();
+            this.printDialog = new System.Windows.Forms.PrintDialog();
+            this.pageSetupDialog = new System.Windows.Forms.PageSetupDialog();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
-            // button1
+            // closeButton
             // 
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.button1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(9, 9);
-            this.button1.Margin = new System.Windows.Forms.Padding(0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(40, 40);
-            this.button1.TabIndex = 0;
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.closeButton.BackColor = System.Drawing.Color.Transparent;
+            this.closeButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("closeButton.BackgroundImage")));
+            this.closeButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.closeButton.Cursor = System.Windows.Forms.Cursors.Default;
+            this.closeButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.closeButton.FlatAppearance.BorderSize = 0;
+            this.closeButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Tan;
+            this.closeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.closeButton.Location = new System.Drawing.Point(9, 9);
+            this.closeButton.Margin = new System.Windows.Forms.Padding(0);
+            this.closeButton.Name = "closeButton";
+            this.closeButton.Size = new System.Drawing.Size(40, 40);
+            this.closeButton.TabIndex = 0;
+            this.closeButton.UseVisualStyleBackColor = false;
+            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
             // 
-            // button2
+            // saveButton
             // 
-            this.button2.BackColor = System.Drawing.Color.Transparent;
-            this.button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button2.BackgroundImage")));
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.ForeColor = System.Drawing.Color.Transparent;
-            this.button2.Location = new System.Drawing.Point(71, 9);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(52, 39);
-            this.button2.TabIndex = 1;
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.saveButton.BackColor = System.Drawing.Color.Transparent;
+            this.saveButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("saveButton.BackgroundImage")));
+            this.saveButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.saveButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.saveButton.FlatAppearance.BorderSize = 0;
+            this.saveButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Tan;
+            this.saveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.saveButton.ForeColor = System.Drawing.Color.Transparent;
+            this.saveButton.Location = new System.Drawing.Point(71, 9);
+            this.saveButton.Name = "saveButton";
+            this.saveButton.Size = new System.Drawing.Size(52, 39);
+            this.saveButton.TabIndex = 1;
+            this.saveButton.UseVisualStyleBackColor = false;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
-            // button3
+            // printButton
             // 
-            this.button3.BackColor = System.Drawing.Color.Transparent;
-            this.button3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button3.BackgroundImage")));
-            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Location = new System.Drawing.Point(138, 14);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(54, 31);
-            this.button3.TabIndex = 2;
-            this.button3.UseVisualStyleBackColor = false;
+            this.printButton.BackColor = System.Drawing.Color.Transparent;
+            this.printButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("printButton.BackgroundImage")));
+            this.printButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.printButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.printButton.FlatAppearance.BorderSize = 0;
+            this.printButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Tan;
+            this.printButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.printButton.Location = new System.Drawing.Point(138, 14);
+            this.printButton.Name = "printButton";
+            this.printButton.Size = new System.Drawing.Size(54, 31);
+            this.printButton.TabIndex = 2;
+            this.printButton.UseVisualStyleBackColor = false;
+            this.printButton.Click += new System.EventHandler(this.printButton_Click);
             // 
-            // button4
+            // inkButton
             // 
-            this.button4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button4.BackgroundImage")));
-            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Location = new System.Drawing.Point(198, 18);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(47, 23);
-            this.button4.TabIndex = 3;
-            this.button4.UseVisualStyleBackColor = true;
+            this.inkButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("inkButton.BackgroundImage")));
+            this.inkButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.inkButton.FlatAppearance.BorderSize = 0;
+            this.inkButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Tan;
+            this.inkButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.inkButton.Location = new System.Drawing.Point(198, 18);
+            this.inkButton.Name = "inkButton";
+            this.inkButton.Size = new System.Drawing.Size(47, 23);
+            this.inkButton.TabIndex = 3;
+            this.inkButton.UseVisualStyleBackColor = true;
+            this.inkButton.Click += new System.EventHandler(this.inkButton_Click);
             // 
             // button5
             // 
             this.button5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button5.BackgroundImage")));
             this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.button5.FlatAppearance.BorderSize = 0;
+            this.button5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Tan;
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.Location = new System.Drawing.Point(353, 11);
             this.button5.Name = "button5";
@@ -115,115 +125,148 @@ namespace NFT
             this.button5.TabIndex = 4;
             this.button5.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // startDrawingButton
             // 
-            this.button6.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button6.BackgroundImage")));
-            this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.button6.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button6.FlatAppearance.BorderSize = 0;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.ForeColor = System.Drawing.Color.Transparent;
-            this.button6.Location = new System.Drawing.Point(467, 4);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(47, 50);
-            this.button6.TabIndex = 5;
-            this.button6.UseVisualStyleBackColor = true;
+            this.startDrawingButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("startDrawingButton.BackgroundImage")));
+            this.startDrawingButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.startDrawingButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.startDrawingButton.FlatAppearance.BorderSize = 0;
+            this.startDrawingButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Tan;
+            this.startDrawingButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.startDrawingButton.ForeColor = System.Drawing.Color.Transparent;
+            this.startDrawingButton.Location = new System.Drawing.Point(467, 4);
+            this.startDrawingButton.Name = "startDrawingButton";
+            this.startDrawingButton.Size = new System.Drawing.Size(47, 50);
+            this.startDrawingButton.TabIndex = 5;
+            this.startDrawingButton.UseVisualStyleBackColor = true;
+            this.startDrawingButton.Click += new System.EventHandler(this.startDrawingButton_Click);
             // 
-            // comboBox1
+            // shapeDrop
             // 
-            this.comboBox1.AllowDrop = true;
-            this.comboBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.comboBox1.DropDownHeight = 100;
-            this.comboBox1.DropDownWidth = 100;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.comboBox1.IntegralHeight = false;
-            this.comboBox1.ItemHeight = 13;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.shapeDrop.AllowDrop = true;
+            this.shapeDrop.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.shapeDrop.DropDownHeight = 100;
+            this.shapeDrop.DropDownWidth = 100;
+            this.shapeDrop.FormattingEnabled = true;
+            this.shapeDrop.ImeMode = System.Windows.Forms.ImeMode.On;
+            this.shapeDrop.IntegralHeight = false;
+            this.shapeDrop.ItemHeight = 13;
+            this.shapeDrop.Items.AddRange(new object[] {
             "Linii",
             "Triunghiuri",
             "Elipse",
             "Dreptunghiuri",
             "Poligoane",
             "Curbe Bezier"});
-            this.comboBox1.Location = new System.Drawing.Point(404, 20);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(18, 21);
-            this.comboBox1.TabIndex = 6;
+            this.shapeDrop.Location = new System.Drawing.Point(404, 20);
+            this.shapeDrop.Name = "shapeDrop";
+            this.shapeDrop.Size = new System.Drawing.Size(18, 21);
+            this.shapeDrop.TabIndex = 6;
+            this.shapeDrop.SelectedIndexChanged += new System.EventHandler(this.shapeDrop_SelectedIndexChanged);
             // 
-            // button7
+            // colorButton
             // 
-            this.button7.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button7.BackgroundImage")));
-            this.button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.button7.FlatAppearance.BorderSize = 0;
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Location = new System.Drawing.Point(558, 4);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(46, 48);
-            this.button7.TabIndex = 7;
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
+            this.colorButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("colorButton.BackgroundImage")));
+            this.colorButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.colorButton.FlatAppearance.BorderSize = 0;
+            this.colorButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Tan;
+            this.colorButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.colorButton.Location = new System.Drawing.Point(558, 4);
+            this.colorButton.Name = "colorButton";
+            this.colorButton.Size = new System.Drawing.Size(46, 48);
+            this.colorButton.TabIndex = 7;
+            this.colorButton.UseVisualStyleBackColor = true;
+            this.colorButton.Click += new System.EventHandler(this.button7_Click);
             // 
-            // button8
+            // fillButton
             // 
-            this.button8.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button8.BackgroundImage")));
-            this.button8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.button8.FlatAppearance.BorderSize = 0;
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.Location = new System.Drawing.Point(610, 5);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(52, 47);
-            this.button8.TabIndex = 8;
-            this.button8.UseVisualStyleBackColor = true;
+            this.fillButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("fillButton.BackgroundImage")));
+            this.fillButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.fillButton.FlatAppearance.BorderSize = 0;
+            this.fillButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Tan;
+            this.fillButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.fillButton.Location = new System.Drawing.Point(610, 5);
+            this.fillButton.Name = "fillButton";
+            this.fillButton.Size = new System.Drawing.Size(52, 47);
+            this.fillButton.TabIndex = 8;
+            this.fillButton.UseVisualStyleBackColor = true;
+            this.fillButton.Click += new System.EventHandler(this.fillButton_Click);
             // 
-            // button9
+            // infoButton
             // 
-            this.button9.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button9.BackgroundImage")));
-            this.button9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.button9.FlatAppearance.BorderSize = 0;
-            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button9.Location = new System.Drawing.Point(700, 5);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(75, 47);
-            this.button9.TabIndex = 9;
-            this.button9.UseVisualStyleBackColor = true;
+            this.infoButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("infoButton.BackgroundImage")));
+            this.infoButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.infoButton.FlatAppearance.BorderSize = 0;
+            this.infoButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Tan;
+            this.infoButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.infoButton.Location = new System.Drawing.Point(700, 5);
+            this.infoButton.Name = "infoButton";
+            this.infoButton.Size = new System.Drawing.Size(75, 47);
+            this.infoButton.TabIndex = 9;
+            this.infoButton.UseVisualStyleBackColor = true;
+            this.infoButton.Click += new System.EventHandler(this.infoButton_Click);
+            // 
+            // pictureBox
+            // 
+            this.pictureBox.BackColor = System.Drawing.Color.White;
+            this.pictureBox.Location = new System.Drawing.Point(198, 104);
+            this.pictureBox.Name = "pictureBox";
+            this.pictureBox.Size = new System.Drawing.Size(400, 400);
+            this.pictureBox.TabIndex = 10;
+            this.pictureBox.TabStop = false;
+            this.pictureBox.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // printDialog
+            // 
+            this.printDialog.UseEXDialog = true;
+            // 
+            // pageSetupDialog
+            // 
+            this.pageSetupDialog.Document = this.printDocument;
             // 
             // MainWindow
             // 
+            this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.BackColor = System.Drawing.Color.Wheat;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button9);
-            this.Controls.Add(this.button8);
-            this.Controls.Add(this.button7);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.button6);
+            this.BackColor = System.Drawing.Color.Bisque;
+            this.ClientSize = new System.Drawing.Size(800, 586);
+            this.Controls.Add(this.pictureBox);
+            this.Controls.Add(this.infoButton);
+            this.Controls.Add(this.fillButton);
+            this.Controls.Add(this.colorButton);
+            this.Controls.Add(this.shapeDrop);
+            this.Controls.Add(this.startDrawingButton);
             this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.inkButton);
+            this.Controls.Add(this.printButton);
+            this.Controls.Add(this.saveButton);
+            this.Controls.Add(this.closeButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MainWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainWindow";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button closeButton;
+        private System.Windows.Forms.Button saveButton;
+        private System.Windows.Forms.Button printButton;
+        private System.Windows.Forms.Button inkButton;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button startDrawingButton;
+        private System.Windows.Forms.ComboBox shapeDrop;
+        private System.Windows.Forms.Button colorButton;
+        private System.Windows.Forms.Button fillButton;
+        private System.Windows.Forms.Button infoButton;
+        private System.Windows.Forms.PictureBox pictureBox;
+        private System.Drawing.Printing.PrintDocument printDocument;
+        private System.Windows.Forms.PrintDialog printDialog;
+        private System.Windows.Forms.PageSetupDialog pageSetupDialog;
     }
 }

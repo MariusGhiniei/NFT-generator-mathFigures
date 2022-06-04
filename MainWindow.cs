@@ -7,29 +7,60 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing.Imaging;
+using System.Drawing.Printing;
 
 namespace NFT
 {
     public partial class MainWindow : Form
     {
+        Graphics graphics;
+        Bitmap bmp;
+        public Pen p;
+        
         public MainWindow()
         {
             InitializeComponent();
+            createCanvas();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        void createCanvas()
+        {
+            bmp = new Bitmap(pictureBox.Width, pictureBox.Height);
+            graphics = Graphics.FromImage(bmp);
+            pictureBox.BackgroundImage = bmp;
+            pictureBox.BackgroundImageLayout = ImageLayout.None;
+
+           
+           
+
+
+        }
+
+        private void closeButton_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.Application.Exit();
+        }
+
+        private void printDocument_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
 
         }
 
-        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        private void saveButton_Click(object sender, EventArgs e)
         {
+            SaveFileDialog saveFile = new SaveFileDialog();
 
+            saveFile.Filter = "PNG(*.PNG)|*.png";
+
+            if(saveFile.ShowDialog() == DialogResult.OK)
+            {
+                pictureBox.Image.Save(saveFile.FileName); // check later 
+            }
         }
-
-        private void button2_Click(object sender, EventArgs e)
+        private void printButton_Click(object sender, EventArgs e)
         {
-
+            //do it later
         }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
@@ -38,6 +69,37 @@ namespace NFT
         }
 
         private void button7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void inkButton_Click(object sender, EventArgs e)
+        {
+            Ink ink = new Ink();
+            ink.Show();
+        }
+
+        private void shapeDrop_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void startDrawingButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void fillButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void infoButton_Click(object sender, EventArgs e)
         {
 
         }
