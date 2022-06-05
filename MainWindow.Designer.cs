@@ -145,7 +145,6 @@ namespace NFT
             // 
             this.shapeDrop.AllowDrop = true;
             this.shapeDrop.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.shapeDrop.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.shapeDrop.DropDownHeight = 100;
             this.shapeDrop.DropDownWidth = 100;
             this.shapeDrop.FormattingEnabled = true;
@@ -160,9 +159,8 @@ namespace NFT
             "Curbe Bezier"});
             this.shapeDrop.Location = new System.Drawing.Point(333, 20);
             this.shapeDrop.Name = "shapeDrop";
-            this.shapeDrop.Size = new System.Drawing.Size(120, 19);
+            this.shapeDrop.Size = new System.Drawing.Size(120, 21);
             this.shapeDrop.TabIndex = 6;
-            this.shapeDrop.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.shapeDrop_DrawItem);
             this.shapeDrop.SelectedIndexChanged += new System.EventHandler(this.shapeDrop_SelectedIndexChanged);
             // 
             // colorButton
@@ -177,6 +175,7 @@ namespace NFT
             this.colorButton.Size = new System.Drawing.Size(46, 48);
             this.colorButton.TabIndex = 7;
             this.colorButton.UseVisualStyleBackColor = true;
+            this.colorButton.Click += new System.EventHandler(this.colorButton_Click);
             // 
             // fillButton
             // 

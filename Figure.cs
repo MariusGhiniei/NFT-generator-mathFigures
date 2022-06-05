@@ -17,7 +17,7 @@ namespace NFT
 
         //abstract methods
         public abstract List<Point> getRandomPoints();
-        public abstract void draw(Color color, DrawItemEventArgs drawItemEventArgs);
+        public abstract void draw(Color color, PaintEventArgs e);
 
         //public static readonly Random rand = new Random();
         //int numberOfFigures = rand.Next(1,7); ///////// not random number of figures
@@ -49,7 +49,7 @@ namespace NFT
             return _points;
         }
 
-        public override void draw(Color color, DrawItemEventArgs drawItemEventArgs)
+        public override void draw(Color color, PaintEventArgs e)
         {
             Pen pen = new Pen(color, 2);
             int indexPoint = 0;
@@ -58,7 +58,49 @@ namespace NFT
             for (int i = 0; i < numberOfFigures; i++)
             {
 
-                drawItemEventArgs.Graphics.DrawLine(pen, _points[indexPoint], _points[indexPoint + 1]); //draw the line
+                e.Graphics.DrawLine(pen, _points[indexPoint], _points[indexPoint + 1]); //draw the line
+
+                indexPoint += 2; // 2 points -> increase with 2
+            }
+
+        }
+    }
+
+    class Lines : Figure
+    {
+        List<Point> _points = new List<Point>();
+
+        public override List<Point> getRandomPoints()
+        {
+            //Line -> 2 points to generate 
+            Random rand = new Random();
+
+            for (int i = 0; i < numberOfFigures; i++)
+            {
+                _points.Add(new Point(
+                    rand.Next(minCanvasValue, maxCanvasValue),
+                    rand.Next(minCanvasValue, maxCanvasValue)
+                    ));
+
+                _points.Add(new Point(
+                    rand.Next(minCanvasValue, maxCanvasValue),
+                    rand.Next(minCanvasValue, maxCanvasValue)
+                    ));
+            }
+
+            return _points;
+        }
+
+        public override void draw(Color color, PaintEventArgs e)
+        {
+            Pen pen = new Pen(color, 2);
+            int indexPoint = 0;
+
+            _points = getRandomPoints(); // get all points for line
+            for (int i = 0; i < numberOfFigures; i++)
+            {
+
+                e.Graphics.DrawLine(pen, _points[indexPoint], _points[indexPoint + 1]); //draw the line
 
                 indexPoint += 2; // 2 points -> increase with 2
             }
@@ -96,7 +138,7 @@ namespace NFT
             return _points;
         }
 
-        public override void draw(Color color, DrawItemEventArgs drawItemEventArgs)
+        public override void draw(Color color, PaintEventArgs e)
         {
             Pen pen = new Pen(color, 2);
             int indexPoint = 0;
@@ -107,7 +149,7 @@ namespace NFT
             {
                 Point[] trianglePoints = { _points[indexPoint], _points[indexPoint + 1], _points[indexPoint + 2] }; // put points in a vector
 
-                drawItemEventArgs.Graphics.DrawPolygon(pen, trianglePoints); // draw the triangle
+                e.Graphics.DrawPolygon(pen, trianglePoints); // draw the triangle
                 indexPoint += 3;// 3 points => +3
             }
 
@@ -140,7 +182,7 @@ namespace NFT
             return _points;
         }
 
-        public override void draw(Color color, DrawItemEventArgs drawItemEventArgs)
+        public override void draw(Color color, PaintEventArgs e)
         {
             Pen pen = new Pen(color, 2);
             int indexPoint = 0;
@@ -152,7 +194,7 @@ namespace NFT
                 Rectangle rectangle = new Rectangle(_points[indexPoint].X, _points[indexPoint].Y, 
                     _points[indexPoint + 1].X, _points[indexPoint + 1].Y); 
 
-                drawItemEventArgs.Graphics.DrawRectangle(pen, rectangle); //draw rectangle
+                e.Graphics.DrawRectangle(pen, rectangle); //draw rectangle
                 indexPoint += 2; //2 "points" -> +2
             }
         }
@@ -184,7 +226,7 @@ namespace NFT
             return _points;
         }
 
-        public override void draw(Color color, DrawItemEventArgs drawItemEventArgs)
+        public override void draw(Color color, PaintEventArgs e)
         {
             Pen pen = new Pen(color, 1);
             int indexPoint = 0;
@@ -196,7 +238,7 @@ namespace NFT
                 Rectangle rectangle = new Rectangle(_points[indexPoint].X, _points[indexPoint].Y,
                     _points[indexPoint + 1].X, _points[indexPoint + 1].Y);
 
-                drawItemEventArgs.Graphics.DrawEllipse(pen, rectangle);
+                e.Graphics.DrawEllipse(pen, rectangle);
 
                 indexPoint += 2;
             }
@@ -236,7 +278,7 @@ namespace NFT
             return _points;
         }
 
-        public override void draw(Color color, DrawItemEventArgs drawItemEventArgs)
+        public override void draw(Color color, PaintEventArgs e)
         {
             Pen pen = new Pen(color, 2);
             int indexPoint = 0;
@@ -245,7 +287,7 @@ namespace NFT
 
             for (int i = 0; i < numberOfFigures; i++)
             {
-                drawItemEventArgs.Graphics.DrawBezier(pen, _points[indexPoint], _points[indexPoint+1],
+                e.Graphics.DrawBezier(pen, _points[indexPoint], _points[indexPoint+1],
                     _points[indexPoint + 2], _points[indexPoint+3]);
 
                 indexPoint += 4;
