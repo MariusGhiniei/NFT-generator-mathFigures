@@ -16,28 +16,15 @@ namespace NFT
 {
     public partial class MainWindow : Form
     {
-        Graphics graphics;
-        Bitmap bmp;
-        public Pen p;
-        
+         int[] shape = new int[] { 0, 0, 0, 0, 0 };
+
         public MainWindow()
         {
             InitializeComponent();
-            createCanvas();
+            Point location = pictureBox.Location;
         }
 
-        void createCanvas()
-        {
-            bmp = new Bitmap(pictureBox.Width, pictureBox.Height);
-            graphics = Graphics.FromImage(bmp);
-            pictureBox.BackgroundImage = bmp;
-            pictureBox.BackgroundImageLayout = ImageLayout.None;
-
-           
-           
-
-
-        }
+        
 
         private void closeButton_Click(object sender, EventArgs e)
         {
@@ -65,56 +52,49 @@ namespace NFT
             //do it later
         }
 
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+
+      /*  private void PictureBox_Paint(object sender, PaintEventArgs e)
         {
+            if (shape[0] == 1)
+            {
+                Line line = new Line();
+                line.draw(Color.Black, e);
+            }
 
+            if (shape[1] == 1)
+            {
+                Triangle triangle = new Triangle();
+                triangle.draw(Color.Black, e);
+            }
+
+            if (shape[2] == 1)
+            {
+                MyRectangle myRectangle = new MyRectangle();
+                myRectangle.draw(Color.Black, e);
+            }
+            if (shape[3] == 1)
+            {
+                Ellipse ellipse = new Ellipse();
+                ellipse.draw(Color.Black, e);
+            }
+
+            if(shape[4] == 1)
+            {
+                Bezier bezier = new Bezier();
+                bezier.draw(Color.Black, e);
+            }
         }
-
-        private void button7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox_Paint(object sender, PaintEventArgs e)
-        {
-            Line line = new Line();
-            line.draw(Color.Red, e);
-
-           Triangle triangle = new Triangle();
-            triangle.draw(Color.Blue, e);
-
-            MyRectangle rectangle = new MyRectangle();
-            rectangle.draw(Color.Pink, e);
-
-            Ellipse ellipse = new Ellipse();
-            ellipse.draw(Color.Green, e);
-
-            Bezier bezier = new Bezier();
-            bezier.draw(Color.Black, e);
-
-
-            
-              
-        }
-
+*/
         private void inkButton_Click(object sender, EventArgs e)
         {
             Ink ink = new Ink();
             ink.Show();
         }
 
-        private void shapeDrop_SelectedIndexChanged(object sender, PaintEventArgs e)
-        {
-            if (shapeDrop.Text == "Linii")
-            {
-               
-                pictureBox_Paint(sender,e);
-            }
-        }
 
         private void startDrawingButton_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void fillButton_Click(object sender, EventArgs e)
@@ -125,6 +105,62 @@ namespace NFT
         private void infoButton_Click(object sender, EventArgs e)
         {
 
+        }
+        private void shapeDrop_DrawItem(object sender, DrawItemEventArgs e)
+        {
+          
+            
+            switch (shapeDrop.Text)
+            {
+                case "Linii":
+                    Line line = new Line();
+                    line.draw(Color.Black, e);
+                    break;
+                case "Triunghiuri":
+                    Triangle triangle = new Triangle();
+                    triangle.draw(Color.Black, e);
+                    break;
+                case "Dreptunghiuri":
+                    MyRectangle myRectangle = new MyRectangle();
+                    myRectangle.draw(Color.Black, e);
+                    break;
+                case "Elipse":
+                    Ellipse ellipse = new Ellipse();
+                    ellipse.draw(Color.Black, e);
+                    break;
+                case "Curbe Bezier":
+                    Bezier bezier = new Bezier();
+                    bezier.draw(Color.Black, e);
+                    break;
+            }
+
+            //e.DrawBackground();
+        }
+        private void shapeDrop_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(shapeDrop.Text == "Linii")
+            {
+                shape[0] = 1;
+               
+               
+                
+            }
+            if(shapeDrop.Text == "Triunghiuri")
+            {
+                shape[1] = 1;
+            }
+            if(shapeDrop.Text == "Dreptunghiuri")
+            {
+                shape[2] = 1;
+            }
+            if(shapeDrop.Text == "Elipse")
+            {
+                shape[3] = 1;
+            }
+            if(shapeDrop.Text == "Curbe Bezier")
+            {
+                shape[4] = 1;
+            }
         }
     }
 }

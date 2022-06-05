@@ -17,7 +17,7 @@ namespace NFT
 
         //abstract methods
         public abstract List<Point> getRandomPoints();
-        public abstract void draw(Color color, PaintEventArgs paintEventArgs);
+        public abstract void draw(Color color, DrawItemEventArgs drawItemEventArgs);
 
         //public static readonly Random rand = new Random();
         //int numberOfFigures = rand.Next(1,7); ///////// not random number of figures
@@ -49,7 +49,7 @@ namespace NFT
             return _points;
         }
 
-        public override void draw(Color color, PaintEventArgs paintEventArgs)
+        public override void draw(Color color, DrawItemEventArgs drawItemEventArgs)
         {
             Pen pen = new Pen(color, 2);
             int indexPoint = 0;
@@ -58,7 +58,7 @@ namespace NFT
             for (int i = 0; i < numberOfFigures; i++)
             {
 
-                paintEventArgs.Graphics.DrawLine(pen, _points[indexPoint], _points[indexPoint + 1]); //draw the line
+                drawItemEventArgs.Graphics.DrawLine(pen, _points[indexPoint], _points[indexPoint + 1]); //draw the line
 
                 indexPoint += 2; // 2 points -> increase with 2
             }
@@ -96,7 +96,7 @@ namespace NFT
             return _points;
         }
 
-        public override void draw(Color color, PaintEventArgs paintEventArgs)
+        public override void draw(Color color, DrawItemEventArgs drawItemEventArgs)
         {
             Pen pen = new Pen(color, 2);
             int indexPoint = 0;
@@ -107,7 +107,7 @@ namespace NFT
             {
                 Point[] trianglePoints = { _points[indexPoint], _points[indexPoint + 1], _points[indexPoint + 2] }; // put points in a vector
 
-                paintEventArgs.Graphics.DrawPolygon(pen, trianglePoints); // draw the triangle
+                drawItemEventArgs.Graphics.DrawPolygon(pen, trianglePoints); // draw the triangle
                 indexPoint += 3;// 3 points => +3
             }
 
@@ -140,7 +140,7 @@ namespace NFT
             return _points;
         }
 
-        public override void draw(Color color, PaintEventArgs paintEventArgs)
+        public override void draw(Color color, DrawItemEventArgs drawItemEventArgs)
         {
             Pen pen = new Pen(color, 2);
             int indexPoint = 0;
@@ -152,7 +152,7 @@ namespace NFT
                 Rectangle rectangle = new Rectangle(_points[indexPoint].X, _points[indexPoint].Y, 
                     _points[indexPoint + 1].X, _points[indexPoint + 1].Y); 
 
-                paintEventArgs.Graphics.DrawRectangle(pen, rectangle); //draw rectangle
+                drawItemEventArgs.Graphics.DrawRectangle(pen, rectangle); //draw rectangle
                 indexPoint += 2; //2 "points" -> +2
             }
         }
@@ -184,7 +184,7 @@ namespace NFT
             return _points;
         }
 
-        public override void draw(Color color, PaintEventArgs paintEventArgs)
+        public override void draw(Color color, DrawItemEventArgs drawItemEventArgs)
         {
             Pen pen = new Pen(color, 1);
             int indexPoint = 0;
@@ -196,7 +196,7 @@ namespace NFT
                 Rectangle rectangle = new Rectangle(_points[indexPoint].X, _points[indexPoint].Y,
                     _points[indexPoint + 1].X, _points[indexPoint + 1].Y);
 
-                paintEventArgs.Graphics.DrawEllipse(pen, rectangle);
+                drawItemEventArgs.Graphics.DrawEllipse(pen, rectangle);
 
                 indexPoint += 2;
             }
@@ -236,7 +236,7 @@ namespace NFT
             return _points;
         }
 
-        public override void draw(Color color, PaintEventArgs paintEventArgs)
+        public override void draw(Color color, DrawItemEventArgs drawItemEventArgs)
         {
             Pen pen = new Pen(color, 2);
             int indexPoint = 0;
@@ -245,7 +245,7 @@ namespace NFT
 
             for (int i = 0; i < numberOfFigures; i++)
             {
-                paintEventArgs.Graphics.DrawBezier(pen, _points[indexPoint], _points[indexPoint+1],
+                drawItemEventArgs.Graphics.DrawBezier(pen, _points[indexPoint], _points[indexPoint+1],
                     _points[indexPoint + 2], _points[indexPoint+3]);
 
                 indexPoint += 4;
