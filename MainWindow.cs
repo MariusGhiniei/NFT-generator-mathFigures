@@ -226,7 +226,17 @@ namespace NFT
 
         private void infoButton_Click(object sender, EventArgs e)
         {
-
+            if (MessageBox.Show(
+                 "Proiect realizat de Ghiniei Marius Iulian M525" +
+                 "\nCodul sursa este pe GitHub, apasa Yes pentru link", "Info", 
+                 MessageBoxButtons.YesNoCancel, 
+                 MessageBoxIcon.Information
+                ) == DialogResult.Yes)
+            {
+                System.Diagnostics.Process.
+                    Start("https://github.com/MariusGhiniei/NFT-generator-mathFigures");
+            }
+            
         }
 
         public void shapeDrop_SelectedIndexChanged(object sender, EventArgs e)
