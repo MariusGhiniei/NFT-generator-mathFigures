@@ -213,7 +213,7 @@ namespace NFT
             this.pictureBox.Size = new System.Drawing.Size(400, 400);
             this.pictureBox.TabIndex = 10;
             this.pictureBox.TabStop = false;
-            this.pictureBox.Click += new System.EventHandler(this.pictureBox_Click);
+            this.pictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox_MouseDown);
             // 
             // printDialog
             // 

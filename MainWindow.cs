@@ -1,14 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Drawing.Imaging;
 using System.Drawing.Printing;
+using System.Windows.Forms;
 
 
 
@@ -24,7 +19,7 @@ namespace NFT
 
 
         Graphics g;
-        
+
         public int canvasWidth = 400, canvasHeight = 400;
         Bitmap bmp = new Bitmap(400, 400);
 
@@ -83,9 +78,101 @@ namespace NFT
 
         }
 
-        private void pictureBox_Click(object sender, EventArgs e)
+        private void drawPixel(int x, int y, Color color)
         {
+            int copyX = x;
+            int copyY = y;
 
+            if (color != Color.White && fillPressed == true)
+            {
+                if (pictureBox.Image != null)
+                {
+                    Bitmap fillBmp = new Bitmap(pictureBox.Image);
+
+                    Color colorPicture = Color.Red;
+
+                    //draw just on black points -> beautiful :)) 
+                    /*  for (int i = 0; i < 400; i++)
+                          for (int j = 0; j < 400; j++)
+                          {
+                              if (x + i < 399 && y + j < 399)
+                              {
+                                  colorPicture = fillBmp.GetPixel(x + i, y + j);
+                                  if (colorPicture == Color.FromArgb(0, 0, 0))
+                                  {
+                                      fillBmp.SetPixel(x + i , y + j, colorFill);
+                                      pictureBox.Image = fillBmp;
+                                  } 
+
+                              }
+
+                          }*/
+
+                    //draw just some lines 
+                    for (int i = 0; i < 400; i++)
+                    {
+                        if (x + i < 399 && y + i < 399)
+                        {
+                            colorPicture = fillBmp.GetPixel(x + i, y + i);
+                            if (colorPicture != Color.FromArgb(0, 0, 0))
+                            {
+                                fillBmp.SetPixel(x + i, y + i, colorFill);
+                                pictureBox.Image = fillBmp;
+                            }
+
+                        }
+                        else if (x + i < 399 && (y - i > 0 && y - i < 399))
+                        {
+                            colorPicture = fillBmp.GetPixel(x + i, y - i);
+                            if (colorPicture != Color.FromArgb(0, 0, 0))
+                            {
+                                fillBmp.SetPixel(x + i, y - i, colorFill);
+                                pictureBox.Image = fillBmp;
+                            }
+                        }
+
+                    }
+                    //draw just rectangles :))
+                    /* for (int i = 0; i < 400; i++)
+                         for (int j = 0; j < 400; j++)
+                         {
+                             if (x + i < 399 && y + j < 399)
+                             {
+                                 colorPicture = fillBmp.GetPixel(x + i, y + j);
+                                 if (colorPicture != Color.FromArgb(0, 0, 0))
+                                 {
+                                     fillBmp.SetPixel(x + i, y + j, colorFill);
+                                     pictureBox.Image = fillBmp;
+                                 }
+
+                             }
+                             else if (x + i < 399 && (y - j > 0 && y - j < 399))
+                             {
+                                 colorPicture = fillBmp.GetPixel(x + i, y - j);
+                                 if (colorPicture != Color.FromArgb(0, 0, 0))
+                                 {
+                                     fillBmp.SetPixel(x + i, y - j, colorFill);
+                                     pictureBox.Image = fillBmp;
+                                 }
+                             }
+                         }*/
+                }
+            }
+        }
+        private void pictureBox_MouseDown(object sender, MouseEventArgs e)
+        {
+            //List<Tuple<Point, Color>> pointsFill = new List<Tuple<Point, Color>>();
+
+            //MessageBox.Show(Cursor.Position.X.ToString());
+            //MessageBox.Show((Cursor.Position.Y).ToString()); => find the coordinates of corners
+            //Point leftUp = new Point(758, 337);
+            //Point rightUp = new Point(1157, 337);
+            //Point leftDown = new Point(758, 735);
+            //Point rigthDown = new Point(1157, 735);
+
+            Point start = new Point(e.X, e.Y);
+
+            drawPixel(start.X, start.Y, colorFill);
 
         }
 
@@ -100,7 +187,7 @@ namespace NFT
 
         private void startDrawingButton_Click(object sender, EventArgs e)
         {
-            
+
             g = Graphics.FromImage(bmp);
 
             //create list for points
@@ -228,15 +315,15 @@ namespace NFT
         {
             if (MessageBox.Show(
                  "Proiect realizat de Ghiniei Marius Iulian M525" +
-                 "\nCodul sursa este pe GitHub, apasa Yes pentru link", "Info", 
-                 MessageBoxButtons.YesNoCancel, 
+                 "\nCodul sursa este pe GitHub, apasa Yes pentru link", "Info",
+                 MessageBoxButtons.YesNoCancel,
                  MessageBoxIcon.Information
                 ) == DialogResult.Yes)
             {
                 System.Diagnostics.Process.
                     Start("https://github.com/MariusGhiniei/NFT-generator-mathFigures");
             }
-            
+
         }
 
         public void shapeDrop_SelectedIndexChanged(object sender, EventArgs e)
@@ -276,5 +363,5 @@ namespace NFT
         }
     }
 
-    
+
 }
