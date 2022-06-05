@@ -16,63 +16,92 @@ namespace NFT
 {
     public partial class MainWindow : Form
     {
-         int[] shape = new int[] { 0, 0, 0, 0, 0 };
+        int[] shape = new int[] { 0, 0, 0, 0, 0 };
         Color color = Color.Black;
         int drawWidth = 2;
         Color colorFill = Color.White;
-       
+        bool fillPressed = false;
+
+
+        Graphics g;
         
-        
-        
+        public int canvasWidth = 400, canvasHeight = 400;
+        Bitmap bmp = new Bitmap(400, 400);
+
 
         public MainWindow()
         {
             InitializeComponent();
-            Point location = pictureBox.Location;
-            
+            canvas(); //delete later 
         }
 
-        
+        public void canvas()
+        {
+            Bitmap bmp = new Bitmap(canvasWidth, canvasHeight);
+            pictureBox.Image = bmp;
+
+        }
+
 
         private void closeButton_Click(object sender, EventArgs e)
         {
             System.Windows.Forms.Application.Exit();
         }
 
-        private void printDocument_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
-        {
-
-        }
-
         private void saveButton_Click(object sender, EventArgs e)
         {
+            Image image = new Bitmap(canvasWidth, canvasHeight);
+
+            Graphics imageSave = Graphics.FromImage(image);
+            imageSave.DrawImage(bmp, 0, 0, canvasWidth, canvasHeight);
+
             SaveFileDialog saveFile = new SaveFileDialog();
 
-            saveFile.Filter = "PNG(*.PNG)|*.png";
+            saveFile.Filter = "PNG(*.PNG)|*.png|JPEG files (*.jpeg)|*.jpeg|All files (*.*)|*.*";
             saveFile.FileName = "NFT";
 
-            if(saveFile.ShowDialog() == DialogResult.OK)
+            if (saveFile.ShowDialog() == DialogResult.OK)
             {
-                pictureBox.Image.Save(saveFile.FileName);
+                image.Save(saveFile.FileName, ImageFormat.Png);
             }
         }
         private void printButton_Click(object sender, EventArgs e)
         {
-            //do it later
+            PrintDialog printDialog = new PrintDialog();
+            PrintDocument printDocument = new PrintDocument();
+
+            printDocument.PrintPage += PrintDocument_PrintPage;
+            printDialog.Document = printDocument;
+            if (printDialog.ShowDialog() == DialogResult.OK)
+                printDocument.Print();
         }
-           
+
+        private void PrintDocument_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            e.Graphics.DrawImage(bmp, 0, 0);
+            bmp.Dispose();
+
+        }
+
+        private void pictureBox_Click(object sender, EventArgs e)
+        {
+
+
+        }
+
 
         private void inkButton_Click(object sender, EventArgs e)
         {
             Ink ink = new Ink();
             ink.Show();
+            //do it later later
         }
 
 
         private void startDrawingButton_Click(object sender, EventArgs e)
         {
-            Graphics g = pictureBox.CreateGraphics();
             
+            g = Graphics.FromImage(bmp);
 
             //create list for points
             List<Point> _pointsLine = new List<Point>();
@@ -80,7 +109,7 @@ namespace NFT
             List<Point> _pointsRectangle = new List<Point>();
             List<Point> _pointsEllipse = new List<Point>();
             List<Point> _pointsBezier = new List<Point>();
-            
+
             //generate the figure objects
             Line line = new Line();
             Triangle triangle = new Triangle();
@@ -99,13 +128,13 @@ namespace NFT
                 {
 
                     g.DrawLine(pen, _pointsLine[indexPoint], _pointsLine[indexPoint + 1]); //draw the line
-
+                    pictureBox.Image = bmp;
                     indexPoint += 2; // 2 points -> increase with 2
                 }
                 shape[0] = 0; // reset the shape selected;
             }
 
-            if(shape[1] == 1)
+            if (shape[1] == 1)
             {
                 _pointsTriangle = triangle.getRandomPoints(); //get all the points for triangle
 
@@ -119,14 +148,14 @@ namespace NFT
                         _pointsTriangle[indexPoint + 1], _pointsTriangle[indexPoint + 2] }; // put points in a vector
 
                     g.DrawPolygon(pen, trianglePoints); // draw the triangle
-
+                    pictureBox.Image = bmp;
                     indexPoint += 3;// 3 points => +3
                 }
 
                 shape[1] = 0;// reset the shape selected
             }
 
-            if(shape[2] == 1)
+            if (shape[2] == 1)
             {
                 _pointsRectangle = myRectangle.getRandomPoints(); //get all the points for MyRectangle
 
@@ -140,13 +169,14 @@ namespace NFT
                         _pointsRectangle[indexPoint + 1].X, _pointsRectangle[indexPoint + 1].Y);
 
                     g.DrawRectangle(pen, rectangle); //draw rectangle
+                    pictureBox.Image = bmp;
                     indexPoint += 2; //2 "points" -> +2
                 }
 
                 shape[2] = 0;// reset the shape selected
             }
 
-            if(shape[3] == 1)
+            if (shape[3] == 1)
             {
                 Pen pen = new Pen(color, drawWidth);
                 int indexPoint = 0;
@@ -160,13 +190,14 @@ namespace NFT
                         _pointsEllipse[indexPoint + 1].X, _pointsEllipse[indexPoint + 1].Y);
 
                     g.DrawEllipse(pen, rectangle); //draw ellipse
+                    pictureBox.Image = bmp;
 
                     indexPoint += 2;// 2 points -> +2
                 }
                 shape[3] = 0;// reset the shape selected
             }
 
-            if(shape[4] == 1)
+            if (shape[4] == 1)
             {
                 Pen pen = new Pen(color, drawWidth);
                 int indexPoint = 0;
@@ -178,6 +209,8 @@ namespace NFT
                     g.DrawBezier(pen, _pointsBezier[indexPoint], _pointsBezier[indexPoint + 1],
                         _pointsBezier[indexPoint + 2], _pointsBezier[indexPoint + 3]);
 
+                    pictureBox.Image = bmp;
+
                     indexPoint += 4;//4 points -> +4
                 }
 
@@ -188,37 +221,37 @@ namespace NFT
 
         private void fillButton_Click(object sender, EventArgs e)
         {
-
+            fillPressed = true;
         }
 
         private void infoButton_Click(object sender, EventArgs e)
         {
 
         }
-   
+
         public void shapeDrop_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(shapeDrop.Text == "Linii")
+            if (shapeDrop.Text == "Linii")
             {
                 shape[0] = 1;
             }
 
-            if(shapeDrop.Text == "Triunghiuri")
+            if (shapeDrop.Text == "Triunghiuri")
             {
                 shape[1] = 1;
             }
 
-            if(shapeDrop.Text == "Dreptunghiuri")
+            if (shapeDrop.Text == "Dreptunghiuri")
             {
                 shape[2] = 1;
             }
 
-            if(shapeDrop.Text == "Elipse")
+            if (shapeDrop.Text == "Elipse")
             {
                 shape[3] = 1;
             }
 
-            if(shapeDrop.Text == "Curbe Bezier")
+            if (shapeDrop.Text == "Curbe Bezier")
             {
                 shape[4] = 1;
             }
@@ -229,7 +262,9 @@ namespace NFT
             ColorDialog colorDialog = new ColorDialog();
             colorDialog.ShowDialog();
             colorFill = colorDialog.Color;
-            
+
         }
     }
+
+    
 }
